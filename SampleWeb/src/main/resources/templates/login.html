@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<title>家計簿登録</title>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="wrapper" id="wrapper">
+				<h1>家計簿登録アプリ</h1>
+				<form th:action="@{/login}" method="post" class="form-block" th:object="${item}">
+					<table>
+						<tr>
+							<td>日付</td>
+							<td id="firstForm"><input type="text" id="input-value" value="" th:field="*{date}"
+									placeholder="⇩日付を選択" /></td>
+						</tr>
+						<tr>
+							<td>項目：</td>
+							<td>
+								<select class="form" th:field="*{item}">
+									<option th:each="item:${items}" th:value="${item}" th:text="${item.jpName}">
+									</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>金額：</td>
+							<td><input class="form" type="text" name="amount" size="20" th:field="*{amount}"></td>
+						</tr>
+						<tr>
+							<td>支払い方法：</td>
+							<td>
+								<select class="form" th:field="*{payMethod}">
+									<option th:each="payMethod:${payMethods}" th:value="${payMethod}"
+										th:text="${payMethod.displayValue}"></option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>備考：</td>
+							<td><textarea class="form" name="remarks" size="20" th:field="*{remarks}"></textarea></td>
+						</tr>
+					</table>
+					<input class="register-btn" type="submit" value="登録する">
+				</form>
+
+				<table class="itemTable">
+					<thead>
+						<tr>
+							<th>日付</th>
+							<th>項目</th>
+							<th>金額</th>
+							<th>支払い方法</th>
+							<th>備考</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item : ${itemList}">
+							<td th:text="${item.date}"></td>
+							<td th:text="${item.item}"></td>
+							<td th:text="${item.amount}"></td>
+							<td th:text="${item.payMethod}"></td>
+							<td th:text="${item.remarks}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="calendar-wrapper">
+				<div class="calendar-middle">
+					<div id="calendar-btn">
+						<button id="prev">前月</button>
+						<button id="next">次月</button>
+					</div>
+					<div id="calendar">
+					</div>
+				</div>
+			</div>
+		</div>
+		<script th:src="@{javascript/calendar.js}"></script>
+	</body>
+
+</html>
