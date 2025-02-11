@@ -36,7 +36,7 @@ public class LoginController {
 		model.addAttribute("item", item);
 		model.addAttribute("payMethods", PayMethod.values());
 		model.addAttribute("items", Item.values());
-		return "login";
+		return "index";
 	}
 	
 	@GetMapping("/other")
