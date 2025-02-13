@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.constant.Item;
 import com.example.demo.constant.PayMethod;
+import com.example.demo.dto.DaySumAmount;
 import com.example.demo.dto.ItemInfo;
 import com.example.demo.form.ItemForm;
+import com.example.demo.service.CalculateService;
 import com.example.demo.service.RegistItemService;
 
 @Controller
@@ -19,6 +21,8 @@ public class LoginController {
 	
 	@Autowired
 	RegistItemService registItemService;
+	@Autowired
+	CalculateService calculateService;
 
 //	@GetMapping("/login")
 //	public String view(Model model){ 
@@ -32,7 +36,9 @@ public class LoginController {
 		
 		ItemForm item = new ItemForm();
 		List<ItemInfo> itemList = registItemService.findAll();
-		model.addAttribute("itemList", itemList);
+		List<DaySumAmount> sumAmounts = calculateService.calcDayAmount(itemList);
+		model.addAttribute("sumAmounts", sumAmounts);
+//		model.addAttribute("itemList", itemList);
 		model.addAttribute("item", item);
 		model.addAttribute("payMethods", PayMethod.values());
 		model.addAttribute("items", Item.values());

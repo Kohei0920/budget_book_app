@@ -1,10 +1,15 @@
 @charset "UTF-8";
+
+body {
+	background-color: #ffe5e5;
+}
+
 .wrapper h1 {
 	text-align: center;
 }
 .form-block {
-	width: 100%;
-/*	text-align: center;*/
+	width: 610px;
+	margin: 0 auto;
 }
 
 .form {
@@ -18,6 +23,15 @@
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }
+
+/*.form-block table {*/
+/*	margin: 0 auto;*/
+/*}*/
+
+/*.form-block input {*/
+/*	display: block;*/
+/*	margin: 0 auto;*/
+/*}*/
 
 .register-btn {
 	padding: 5px 15px;
@@ -128,4 +142,12 @@
 	position: relative;
 }
 
+.itemTable th {
+	background-color: #f34955;
+/*	color: white;*/
+}
+
+.itemTable td {
+	background-color: white;
+}
 
