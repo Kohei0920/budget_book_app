@@ -10,7 +10,7 @@
 	<body>
 		<div class="main">
 			<div class="wrapper" id="wrapper">
-				<h1>家計簿登録アプリ</h1>
+				<h1>家計簿アプリ</h1>
 <!--				<h2 th:text="${number}"></h2>-->
 				<form th:action="@{/login}" method="post" class="form-block" th:object="${item}">
 					<table>
@@ -62,10 +62,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="sumAmount : ${sumAmounts}">
-							<td th:text="${sumAmount.date}"></td>
-							<td th:text="'¥' + ${sumAmount.sum}"></td>
-							<td th:text="${sumAmount.memo}"></td>
+						<tr th:each="sumAmount : ${sumAmounts}" th:object="${sumAmount}">
+							<td th:text="*{date}"></td>
+							<td th:text="'¥' + *{sum}"></td>
+							<td th:text="*{memo}"></td>
+							<td><a th:href="@{/login/date={date}(date=*{date})}">内訳</a></td>
 <!--							<td th:text="${item.payMethod}"></td>-->
 <!--							<td th:text="${item.remarks}"></td>-->
 						</tr>

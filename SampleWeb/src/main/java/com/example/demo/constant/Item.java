@@ -31,6 +31,8 @@ public enum Item {
 	
 	KARAOKE("カラオケ"),
 	
+	RECREATION("娯楽費"),
+	
 	MISCELLANEOUS("雑費");
 	
 	private String jpName;

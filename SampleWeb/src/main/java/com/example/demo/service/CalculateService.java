@@ -34,24 +34,23 @@ public class CalculateService {
 			}
 		}
 		
-		for(Integer i = 0; i < itemInfos.size() - 1 ; i++) {
+		for(Integer i = 0; i < itemInfos.size() ; i++) {
 			
-			if(itemInfos.get(i).getDate().equals(itemInfos.get(i+1).getDate())) {
-				
-				sumAmount += itemInfos.get(i).getAmount();
-				
-				if(i + 1 == itemInfos.size() - 1) {
-					createDaySumAmount(itemInfos, sumListPerDay, i+1);
-				}
-				
-			}	else {	
+			if (i == itemInfos.size() - 1) {
 				createDaySumAmount(itemInfos, sumListPerDay, i);
-				sumAmount = 0;
+			} else {
 				
-				if(i + 1 == itemInfos.size() - 1) {
-					createDaySumAmount(itemInfos, sumListPerDay, i+1);
+				if (itemInfos.get(i).getDate().equals(itemInfos.get(i + 1).getDate())) {
+
+					sumAmount += itemInfos.get(i).getAmount();
+
+				} else {
+
+					createDaySumAmount(itemInfos, sumListPerDay, i);
+
 				}
-			}		
+			}
+			
 			}	
 		return sumListPerDay;
 		}

@@ -12,7 +12,7 @@ public enum PayMethod {
 	CASH(1, "現金"),
 	
 	/*クレジットカード*/
-	CREDIT_CARD(2, "クレジットカード"),
+	CREDIT_CARD(2, "楽天カード"),
 	
 	/*銀行引き落とし*/
 	BANK_WITHDRAWAL(3, "銀行引き落とし"),

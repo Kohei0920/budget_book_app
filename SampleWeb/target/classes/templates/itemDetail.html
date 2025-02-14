@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<h1 th:text="'今日の日付は' + ${date} + 'です'"></h1>
+		<p>家計簿の詳細ページです。</p>
+		<table>
+			<tr>
+				<th>項目名</th>
+				<th>金額</th>
+			</tr>
+			<tr th:each="itemAmount:${itemAmounts}">
+				<td th:text="${itemAmount.item}"></td>
+				<td th:text="'¥' + ${itemAmount.subTotal}"></td>
+			</tr>
+		</table>
+	</body>
+
+</html>
